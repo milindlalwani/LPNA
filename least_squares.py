@@ -22,7 +22,12 @@ def lstsq_residual(A, x, b):
     return the residual norm, ||Ax-b||_2.
     """
     # TODO: implementation here
-    return 
+    #Returning the residual vector: Ax - b: 
+    product = np.dot(A,b)
+    res = None
+    if(A.shape == b.shape): 
+        res = np.subtract(A, b)
+    return res
                                 
 def sketch_lstsq(S, A, b):
     """
