@@ -15,7 +15,10 @@ def lstsq(A, b):
     m, n = A.shape
     assert m >= n
     # TODO: implementation here
-
+    inv = inverse(np.dot(A, A.transpose())) # inv = (A^T * A)^-1
+    part_two = np.dot(A.transpose(), b) #A^T * b
+    res = np.dot(inv, part_two)
+    
 
 def lstsq_residual(A, x, b):
     """
