@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def lstsq(A, b):
     """
     Solve the least squares problem
@@ -15,7 +14,7 @@ def lstsq(A, b):
     m, n = A.shape
     assert m >= n
     # TODO: implementation here
-    inv = inverse(np.dot(A, A.transpose())) # inv = (A^T * A)^-1
+    inv = np.linalg.inv(A.transpose() @ A) # inv = (A^T @ A)^-1
     part_two = np.dot(A.transpose(), b) #A^T * b
     res = np.dot(inv, part_two)
     
@@ -26,11 +25,11 @@ def lstsq_residual(A, x, b):
     """
     # TODO: implementation here
     #Returning the residual vector: Ax - b: 
-    product = np.dot(A,b)
+    product = np.dot(A,x)
     res = None
-    if(A.shape == b.shape): 
-        res = np.subtract(A, b)
-    return res
+    if(product.shape == b.shape): 
+        res = product - b
+    return np.linalg.norm(res)
                                 
 def sketch_lstsq(S, A, b):
     """
@@ -47,7 +46,7 @@ def sketch_lstsq(S, A, b):
     # TODO: implementation here,
     # You can form A2 = SA and b2 = Sb, and call lstsq(A2, b2).
     A2 = np.dot(S, A)
-    B2 = np.dot(S, B)
+    B2 = np.dot(S, b)
     return lstsq(A2, B2)
 
 def embedding_builder(s, m):
@@ -55,7 +54,7 @@ def embedding_builder(s, m):
     build an s by m matrix of i.i.d. Normal random variables. 
     Each element in the matrix has mean 0 and variance 1/s.
     """
-    res = np.random.normal(0, 1, (s, m))
+    res = np.random.normal(0, 1/s, (s, m))
     return res
 
 m = 300
