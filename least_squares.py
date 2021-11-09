@@ -15,7 +15,7 @@ def lstsq(A, b):
     m, n = A.shape
     assert m >= n
     # TODO: implementation here
-    raise NotImplementedError
+    
 
 
 def lstsq_residual(A, x, b):
@@ -23,7 +23,8 @@ def lstsq_residual(A, x, b):
     return the residual norm, ||Ax-b||_2.
     """
     # TODO: implementation here
-    raise NotImplementedError
+    return 
+                                t
 
 
 def sketch_lstsq(S, A, b):
@@ -48,7 +49,8 @@ def embedding_builder(s, m):
     build an s by m matrix of i.i.d. Normal random variables. 
     Each element in the matrix has mean 0 and variance 1/s.
     """
-    raise NotImplementedError
+    res = np.random.normal(0, 1, (s, m))
+    return res
 
 
 m = 300
