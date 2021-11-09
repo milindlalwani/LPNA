@@ -15,7 +15,6 @@ def lstsq(A, b):
     m, n = A.shape
     assert m >= n
     # TODO: implementation here
-    
 
 
 def lstsq_residual(A, x, b):
@@ -24,9 +23,7 @@ def lstsq_residual(A, x, b):
     """
     # TODO: implementation here
     return 
-                                t
-
-
+                                
 def sketch_lstsq(S, A, b):
     """
     Solve the sketched least squares problem
@@ -41,8 +38,9 @@ def sketch_lstsq(S, A, b):
     """
     # TODO: implementation here,
     # You can form A2 = SA and b2 = Sb, and call lstsq(A2, b2).
-    raise NotImplementedError
-
+    A2 = np.dot(S, A)
+    B2 = np.dot(S, B)
+    return lstsq(A2, B2)
 
 def embedding_builder(s, m):
     """
@@ -51,7 +49,6 @@ def embedding_builder(s, m):
     """
     res = np.random.normal(0, 1, (s, m))
     return res
-
 
 m = 300
 n = 10
