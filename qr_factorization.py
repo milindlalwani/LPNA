@@ -41,7 +41,7 @@ n = 3
 
 A = np.random.rand(4, 3)
 q, r = np.linalg.qr(A)
-Q, R = qr_decomposition(A)
+Q, R = qr_factorization(A)
 print("Q: " + Q) 
 print("q: " + q)
 print("R: " + R)
