@@ -33,3 +33,15 @@ def qr_factorization(A):
         R = H @ R
         Q = H @ Q
     return Q[:col].T, R[:col]
+
+
+m = 4
+n = 3
+
+A = np.random.rand(4, 3)
+q, r = np.linalg.qr(A)
+Q, R = qr_decomposition(A)
+print("Q: " + Q) 
+print("q: " + q)
+print("R: " + R)
+print("r: " + r)
