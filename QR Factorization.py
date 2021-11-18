@@ -1,3 +1,6 @@
+import numpy as np
+
+#Householder transform implementation to be used in QR Factorization
 def householder(A):
     alpha = A[0]
     s = np.power(np.linalg.norm(A[1:]), 2)
