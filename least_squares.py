@@ -15,8 +15,8 @@ def lstsq(A, b):
     assert m >= n
     # TODO: implementation here
     inv = np.linalg.inv(A.transpose() @ A) # inv = (A^T @ A)^-1
-    part_two = np.dot(A.transpose(), b) #A^T * b
-    res = np.dot(inv, part_two)
+    part_two = A.transpose() @ b #A^T * b
+    res = inv @ part_two
     
 
 def lstsq_residual(A, x, b):
@@ -25,7 +25,7 @@ def lstsq_residual(A, x, b):
     """
     # TODO: implementation here
     #Returning the residual vector: Ax - b: 
-    product = np.dot(A,x)
+    product = A @ x
     res = None
     if(product.shape == b.shape): 
         res = product - b
@@ -45,8 +45,8 @@ def sketch_lstsq(S, A, b):
     """
     # TODO: implementation here,
     # You can form A2 = SA and b2 = Sb, and call lstsq(A2, b2).
-    A2 = np.dot(S, A)
-    B2 = np.dot(S, b)
+    A2 = S @ A
+    B2 = S @ b
     return lstsq(A2, B2)
 
 def embedding_builder(s, m):
