@@ -1,5 +1,6 @@
 import numpy as np
-
+#Time Complexity: complexity is 2mn^2 − (2/3)n^3 flops -> O(n^3)
+flops
 #Householder transform implementation to be used in QR Factorization
 def householder(A):
     alpha = A[0]
