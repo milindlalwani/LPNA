@@ -1,0 +1,27 @@
+import numpy as np
+import numpy.linalg as la
+import scipy.sparse as sp
+
+# 4-wise and 2-wise independent hash functions
+# Following notes at https://en.wikipedia.org/wiki/K-independent_hashing#Polynomials_with_random_coefficients
+
+p = 2564217863 # A large, random prime number
+k_4 = np.random.randint(-2**31, 2**31, 4)
+k_2 = np.random.randint(-2**31, 2**31, 2)
+
+def kwise_hash(k, x):
+    return np.polyval(k, x) % p
+
+def h(x, k):
+    return kwise_hash(k_2, x) % k
+
+def s(x):
+    i = (kwise_hash(k_4, x) % 2)
+    return [1., -1.][i]
+
+def generate_sketch(k, n):
+    S = np.zeros((k, n))
+    for col in range(n):
+        row = h(col, k)
+        S[row, col] = s(col)
+    return S
