@@ -41,8 +41,6 @@ sketch_sizes = [50, 100, 150, 200, 250, 300]
 A = np.random.rand(m,n)
 b = np.random.rand(m)
 
-
-
 def lstsq_residual(A, x, b):
     """
     return the residual norm, ||Ax-b||_2.
@@ -71,9 +69,15 @@ def sketch_lstsq(S, A, b):
     A2 = S @ A
     B2 = S @ b
     return lstsq(A2, B2)
-
+    
+sketch_sizes = [50, 100, 150, 200, 250, 300]
+A = np.random.rand(m,n)
+b = np.random.rand(m)
+x = lstsq(A, b)
+error = lstsq_residual(A, x, b)
+print("error is", error)
 for s in sketch_sizes:
     S = embedding_builder(s, m)
-    x = generate_count_sketch(m, n)
+    x = sketch_lstsq(S, A, b)
     error = lstsq_residual(A, x, b)
     print("sketching error with sketch size ", s, " is", error)
