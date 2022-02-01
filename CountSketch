@@ -77,6 +77,3 @@ for s in sketch_sizes:
     x = generate_count_sketch(m, n)
     error = lstsq_residual(A, x, b)
     print("sketching error with sketch size ", s, " is", error)
-
-
-
