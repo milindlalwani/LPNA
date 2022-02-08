@@ -35,8 +35,8 @@ def embedding_matrix(A, m, n):
 
 
 sketch_sizes = [50, 100, 150, 200, 250, 300]
-A = np.random.rand(3, 6)
-b = np.random.rand(3)
+A = np.random.rand(20, 30)
+b = np.random.rand(25)
 
 list_relative_error = []
 print("error is", error)
@@ -46,10 +46,6 @@ for s in sketch_sizes:
     S = generate_count_sketch(n, k)
     x = linalg.lstsq(S, A, b)
     x_ref = linalg.lstsq(A, b)
-    relative_error = numpy.linalg.norm(x_ref-x*)/numpy.linalg.norm(x_ref)
+    relative_error = numpy.linalg.norm(x_ref-x) / numpy.linalg.norm(x_ref)
     list_relative_error.append(relative_error)
 plt.plot(sketch_sizes, list_relative_error)
-
-
-
-
