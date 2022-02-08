@@ -38,8 +38,6 @@ sketch_sizes = [50, 100, 150, 200, 250, 300]
 A = np.random.rand(3, 6)
 b = np.random.rand(3)
 
-x_ref = linalg.lstsq(A, b)
-relative_error = numpy.linalg.norm(x_ref-x*)/numpy.linalg.norm(x_ref)
 list_relative_error = []
 print("error is", error)
 for s in sketch_sizes: 
